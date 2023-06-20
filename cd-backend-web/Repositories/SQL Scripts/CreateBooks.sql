@@ -1,0 +1,19 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [ConnectionDemo].[dbo].[Books](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Author] [nvarchar](150) NOT NULL,
+	[Format] [nvarchar](50) NOT NULL,
+	[Read] [bit] NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [ConnectionDemo].[dbo].[Books] ADD  CONSTRAINT [PK_Books] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [ConnectionDemo].[dbo].[Books] ADD  CONSTRAINT [DEFAULT_Books_Read]  DEFAULT ((0)) FOR [Read]
+GO
